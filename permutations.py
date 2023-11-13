@@ -1,19 +1,23 @@
 from sys import argv
 from typing import Optional
 
-def permute(possible: str, prefix: str = '') -> None:
-    """ Prints all permutations of the <possible> characters, with <prefix>
+def word_scramble(options: str, so_far: str = '') -> None:
+    """ Prints all permutations of the <options> characters, with <so_far>
     being placed at the beginning of each permutation."""
-    if len(possible) == 0:
-        print(prefix)
+    if len(options) == 0:
+        print(so_far)
     else:
-        for i in range(len(possible)):
-            remaining = possible[0:i] + possible[i+1:]
-            permute(remaining, prefix + possible[i])
+        for i in range(len(options)):
+            # choose an option...
+            choice = options[i]
+            remaining = options[0:i] + options[i+1:]
+
+            # explore that choice recursively
+            word_scramble(remaining, so_far + choice)
 
 
 if __name__ == "__main__":
     if len(argv) != 2:
         print("Incorrect number of arguments")
     else:
-        permute(argv[1])
+        word_scramble(argv[1])
