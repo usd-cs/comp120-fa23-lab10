@@ -20,4 +20,4 @@ if __name__ == "__main__":
     if len(argv) != 2:
         print("Incorrect number of arguments")
     else:
-        word_scramble(argv[1])
+        word_scramble(argv[1], "")
